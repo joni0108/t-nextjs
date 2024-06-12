@@ -10,7 +10,7 @@
     <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/joni0108/t-npm-package/test.yml?style=for-the-badge&logo=vitest&logoColor=white&label=TESTS">
   </a>
   <a aria-label="Bundle Size" href="https://github.com/joni0108/t-nextjs">
-    <img alt="" src="https://img.shields.io/github/languages/code-size/joni0108/t-nextjs?style=for-the-badge&color=B3CAFF">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/joni0108/t-nextjs?style=for-the-badge&color=B3CAFF">
   </a>
 </p>
 <p align="center">
