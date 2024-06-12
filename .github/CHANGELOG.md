@@ -18,6 +18,9 @@ This is the initial version of this template, it does have the following:
     - `coverage`: Will run all tests and generate a converage report.
     - `bench`: Will run all the benchmarks test you have.
 - We have created an `.demo.env` file with all the environmental variables it does need.
+- Added a demo test suit, and benchmark test.
+- Added the initial folder structure.
+- Added a healthcheck at `/api` route.
 
 ### UI and Components
 - We added the light/dark theme to the template.
