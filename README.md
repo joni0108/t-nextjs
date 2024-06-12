@@ -291,6 +291,8 @@ If everything went well, you are all set!
 - [ ] Add `@codixfy/gemini` package for working with gemini ai.
 - [ ] Add `@codixfy/ui` and configure it to have react ui components package.
 
+<update-link-of-release-version-tag>
+
 Done!
 
 ## 📖 Docs
