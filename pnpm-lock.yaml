@@ -8,15 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@biomejs/biome':
-        specifier: ^1.8.1
-        version: 1.8.1
-      '@vitejs/plugin-react':
-        specifier: ^4.3.1
-        version: 4.3.1(vite@5.2.13(@types/node@20.14.2))
-      '@vitest/coverage-v8':
-        specifier: ^1.6.0
-        version: 1.6.0(vitest@1.6.0(@types/node@20.14.2))
       next:
         specifier: 14.2.4
         version: 14.2.4(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -26,10 +17,10 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
-      vitest:
-        specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.14.2)
     devDependencies:
+      '@biomejs/biome':
+        specifier: ^1.8.1
+        version: 1.8.1
       '@types/node':
         specifier: ^20
         version: 20.14.2
@@ -39,6 +30,12 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.2.13(@types/node@20.14.2))
+      '@vitest/coverage-v8':
+        specifier: ^1.6.0
+        version: 1.6.0(vitest@1.6.0(@types/node@20.14.2))
       postcss:
         specifier: ^8
         version: 8.4.38
@@ -48,6 +45,9 @@ importers:
       typescript:
         specifier: ^5
         version: 5.4.5
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.0(@types/node@20.14.2)
 
 packages:
 
