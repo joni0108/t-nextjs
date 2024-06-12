@@ -159,6 +159,15 @@ Codixfy UI</a>
 - Modern react ui components library, with design inspired on<a style="color: #1069da" href="https://preline.co/index.html">Preline UI.</a>
 </div>
 </li>
+
+<li>
+<div style="display: flex; gap: 7px; align-items: center">
+📧
+<a style="color: #1069da; font-weight: bold" href="#custom-hooks">
+Custom Hooks</a> 
+- A pack with common hooks for web applications projects. See docs.
+</div>
+</li>
 </div>
 
 </ul>
@@ -259,5 +268,29 @@ pnpm test
 ```
 
 If everything went well, you are all set!
+
+## 🛣️ Roadmap
+- [x] Add all the initial dependencies & configure them
+- [x] Add all the scripts, including testing and linting.
+- [ ] Create the folder structure
+- [ ] Create the `config.ts` file and other constants.
+- [ ] Finish configuring dev dependencies
+- [ ] Create the github actions
+- [ ] Create the `SEO` object and inject it to the layout
+- [ ] Add the `ThemeContext` and implement them.
+- [ ] Add `tw-merge` dependency.
+- [ ] Add the custom hooks.
+- [ ] Add and configure `storybook` and its plugins
+- [ ] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
+- [ ] Add `Clerk Auth` and configure it.
+- [ ] Add `Resend` and configure it.
+- [ ] Add and configure `Firestore` from firebase.
+- [ ] Create masking route/firebase auth for request to storage.
+- [ ] Add and configure mongodb.
+- [ ] Add `easy-mongo` library/class for easily working with basic calls to mongo.
+- [ ] Add `@codixfy/gemini` package for working with gemini ai.
+- [ ] Add `@codixfy/ui` and configure it to have react ui components package.
+
+Done!
 
 ## 📖 Docs
