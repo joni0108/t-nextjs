@@ -1,6 +1,6 @@
 <p align="center"><image src="https://skillicons.dev/icons?i=next"></p>
 <h1 align="center"><span style="color: #1069da;">NextJS</span> Template</h1>
-<p align="center">The boilerplate you need for your NextJS Project</p>
+<p align="center">The boilerplate you need for your <span style="color: #1069da; font-weight: bold;">NextJS</span> Project</p>
 
 <p align="center">
   <a aria-label="NPM Version" href="https://github.com/joni0108/t-nextjs">
