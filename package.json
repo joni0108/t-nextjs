@@ -10,7 +10,7 @@
 		"format": "biome format .",
 		"format:fix": "biome format --write .",
 		"test": "vitest run",
-		"coverage": "vitest run --coverage",
+		"coverage": "vitest run --coverage.enabled --coverage.lines=80",
 		"bench": "vitest bench",
 		"prepare": "husky",
 		"init": "npm install pnpm -g && pnpm install && pnpm test && pnpm dev",
