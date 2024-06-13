@@ -19,15 +19,14 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+      - name: git-checkout
+        uses: actions/checkout@v3
 
-      - name: Install pnpm
-        run: npm i pnpm
+      - name: pnpm-setup
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.3.0
+      
       - name: Install Dependencies
         run: pnpm install
       - name: Builds the project
