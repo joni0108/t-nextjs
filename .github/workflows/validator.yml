@@ -22,13 +22,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
+      - name: Install pnpm
+        run: npm i pnpm
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install
       - name: Format any code that needs to be formatted
-        run: npm run format
+        run: pnpm format
       - name: Check for lint errors
-        run: npm run lint
+        run: pnpm lint
       - name: Run all tests
-        run: npm run test
+        run: pnpm test
       #- name: Check to pass the coverage threshold
-      #  run: npm run coverage
+      #  run: pnpm coverage
