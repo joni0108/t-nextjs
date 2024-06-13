@@ -32,9 +32,11 @@ To maintain the quality and consistency of the project, please adhere to the fol
 We run the following tests on each pull requests:
 
 ```bash
-pnpm format # Formatting check
-pnpm lint   # Code errors and bad practices check
-pnpm test   # Run all the test suites
+pnpm format     # Formatting check
+pnpm lint       # Code errors and bad practices check
+pnpm test       # Run all the test suites
+pnpm coverage   # Check for all the code to be covered
+pnpm build      # Try to build 
 ```
 
 ### Additional Guidelines
