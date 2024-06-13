@@ -156,7 +156,7 @@ Gemini AI</a>
 <image src="https://www.codixfy.com/images/icon-light.ico" style="width: 16px; padding-left: 2px"">
 <a style="color: #1069da; font-weight: bold" href="https://github.com/joni0108/codixfy-ui">
 Codixfy UI</a> 
-- Modern react ui components library, with design inspired on<a style="color: #1069da" href="https://preline.co/index.html">Preline UI.</a>
+- Modern react ui components library, with design inspired on<a style="color: #1069da" href="https://preline.co/index.html"> Preline UI. (under-development) </a>
 </div>
 </li>
 
