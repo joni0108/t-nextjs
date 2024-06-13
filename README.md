@@ -215,24 +215,21 @@ Done, you have all the files on your desktop, now you can start editing them, an
 ### ⚙️ Configurations
 
 > [!WARNING]
-> This repository uses `pnpm` package loader, so if you do not have it installed yet, please install it with the code line below on your terminal.
-
-```bash
-npm install -g pnpm
-```
+> This repository uses `pnpm` package loader, so it will be installed on your machine. Do not worry, you can choose to use the default npm on your other projects with no extra configurations.
 
 #### Packages Installation
-1. Install all the package using the code line below:
+
+1. Install all the packages, and run all the initial checks using the code line below:
 
 ```bash
-pnpm install
+npm run init
 ```
 
 #### Info Configurations
 The project includes some information you need to modify for your project, start by:
 
 2. Going to `package.json` file and modify the name and version of the project.
-3. Go to `@/constants/project.ts` and modify all the values matching your project information.
+3. Go to `@/config.ts` and modify all the values matching your project information.
 
 #### Adding the environmental variables
 At this point you are almost all set, just need to add all the environmental variables related with the services you will be using.
@@ -252,7 +249,7 @@ You are all set, now you can run some commands to verify the installation went w
 1. Verify the linters and formatters by using:
 
 ```bash
-pnpm format
+pnpm format:fix
 ```
 
 then,
@@ -274,7 +271,7 @@ If everything went well, you are all set!
 - [x] Add all the scripts, including testing and linting.
 - [x] Create the folder structure
 - [x] Create the `config.ts` file and other constants.
-- [ ] Finish configuring dev dependencies
+- [x] Finish configuring dev dependencies
 - [ ] Create the github actions
 - [ ] Create the `SEO` object and inject it to the layout
 - [ ] Add the `ThemeContext` and implement them.

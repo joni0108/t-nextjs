@@ -17,6 +17,8 @@ This is the initial version of this template, it does have the following:
     - `test`: Will run all the test files with vitest.
     - `coverage`: Will run all tests and generate a converage report.
     - `bench`: Will run all the benchmarks test you have.
+    - `init`: Will initialize all the needed files, packages, and commands when trying to create your project and/or contribute.
+    - `git-prepare`: Only for contributors, will run all the scripts that are ran on each pull request, so you make sure your code will pass the minimum requirements and contributing guidelines.
 - We have created an `.demo.env` file with all the environmental variables it does need.
 - Added a demo test suit, and benchmark test.
 - Added the initial folder structure.

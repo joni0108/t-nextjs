@@ -12,7 +12,9 @@
 		"test": "vitest run",
 		"coverage": "vitest run --coverage",
 		"bench": "vitest bench",
-		"prepare": "husky"
+		"prepare": "husky",
+		"init": "npm install pnpm -g && pnpm install && pnpm test && pnpm dev",
+		"git-prepare": "pnpm format:fix && pnpm lint && pnpm test && pnpm coverage && pnpm build"
 	},
 	"dependencies": {
 		"next": "14.2.4",
