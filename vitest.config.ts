@@ -8,6 +8,12 @@ export default defineConfig({
     test: {
         coverage: {
             exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*", "*.bench.ts"],
+            thresholds: {
+                lines: 0,
+                functions: 0,
+                branches: 0,
+                statements: 0,
+            }
         },
     },
     resolve: {
