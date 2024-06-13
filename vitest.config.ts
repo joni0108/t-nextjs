@@ -7,7 +7,7 @@ export default defineConfig({
     plugins: [react()],
     test: {
         coverage: {
-            exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*"],
+            exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*", "*.bench.ts"],
         },
     },
     resolve: {

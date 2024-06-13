@@ -272,7 +272,7 @@ If everything went well, you are all set!
 ## 🛣️ Roadmap
 - [x] Add all the initial dependencies & configure them
 - [x] Add all the scripts, including testing and linting.
-- [ ] Create the folder structure
+- [x] Create the folder structure
 - [ ] Create the `config.ts` file and other constants.
 - [ ] Finish configuring dev dependencies
 - [ ] Create the github actions
