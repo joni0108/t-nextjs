@@ -273,7 +273,7 @@ If everything went well, you are all set!
 - [x] Add all the initial dependencies & configure them
 - [x] Add all the scripts, including testing and linting.
 - [x] Create the folder structure
-- [ ] Create the `config.ts` file and other constants.
+- [x] Create the `config.ts` file and other constants.
 - [ ] Finish configuring dev dependencies
 - [ ] Create the github actions
 - [ ] Create the `SEO` object and inject it to the layout
