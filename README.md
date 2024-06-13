@@ -296,3 +296,39 @@ If everything went well, you are all set!
 Done!
 
 ## 📖 Docs
+
+### Folders Structure
+
+```html
+<root>
+  |
+  |__ <src>
+  |     |__ <app>
+  |     |     |__ <api>
+  |     |     |    |__ route.ts
+  |     |     |__ page.tsx
+  |     |     |__ layout.tsx
+  |     |__ <components>
+  |     |        |__ <core>
+  |     |        |      |__ demo.tsx
+  |     |        |__ <functional>
+  |     |        |        |__ demo.tsx
+  |     |        |__ <server>
+  |     |               |__ demo.tsx
+  |     |__ <context>
+  |     |      |__ demo.ts
+  |     |__ <hooks>
+  |     |      |__ demo.ts
+  |     |__ <libs>
+  |     |      |__ demo.ts
+  |     |__ <services>
+  |     |      |__ demo.ts
+  |     |__ <tests>
+  |            |__ <__bench__>
+  |            |       |__ demo.bench.ts
+  |            |__ demo.test.ts
+  |__ .demo.env
+  |__ .env.local
+  |__ package.json
+```
+
