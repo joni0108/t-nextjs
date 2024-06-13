@@ -44,7 +44,9 @@
 			"*.config.md",
 			"*.config.tsbuildinfo",
 			"*.config.map",
-			"*.config.d.ts"
+			"*.config.d.ts",
+			"src/**/*.test.*",
+			"src/**/*.bench.*"
 		]
 	}
 }

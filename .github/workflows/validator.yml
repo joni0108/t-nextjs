@@ -31,5 +31,5 @@ jobs:
         run: pnpm lint
       - name: Run all tests
         run: pnpm test
-      #- name: Check to pass the coverage threshold
-      #  run: pnpm coverage
+      - name: Check to pass the coverage threshold
+        run: pnpm coverage

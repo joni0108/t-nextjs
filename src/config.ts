@@ -7,9 +7,13 @@ export const CONFIG = {
 		HOMEPAGE: "https://myhomepage.com",
 	},
 	API: {
+		ROOT: "http://localhost:3000",
 		BASE: "/api",
 		ENDPOINTS: {
 			HEALTHCHECK: "/",
 		},
+	},
+	getAPIURL(endpoint: string) {
+		return this.API.ROOT + this.API.BASE + endpoint;
 	},
 };

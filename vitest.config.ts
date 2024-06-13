@@ -6,8 +6,16 @@ import path from "path"
 export default defineConfig({
     plugins: [react()],
     test: {
+        globals: true,
+        environment: "jsdom",
         coverage: {
-            exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*", "*.bench.ts"],
+            exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*", "src/**/*.bench.*", "src/**/*.test.*", "src/app/layout.tsx"],
+            thresholds: {
+                lines: 100,
+                functions: 100,
+                branches: 100,
+                statements: 100,
+            }
         },
     },
     resolve: {
