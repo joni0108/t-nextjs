@@ -273,7 +273,7 @@ If everything went well, you are all set!
 - [x] Create the `config.ts` file and other constants.
 - [x] Finish configuring dev dependencies
 - [x] Create the github actions
-- [ ] Add 100% coverage. And update the minimum threshold.
+- [x] Add 100% coverage. And update the minimum threshold.
 - [ ] Create the `SEO` object and inject it to the layout
 - [ ] Add the `ThemeContext` and implement them.
 - [ ] Add `tw-merge` dependency.

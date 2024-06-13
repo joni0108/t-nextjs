@@ -4,10 +4,10 @@
 //? On this example is just a function that check if the server is up, and return a boolean, and some data returned by the api.
 
 export class DemoService {
-	isUp: boolean;
-	timeOfLastCheck: Date;
-	message: string;
-	hasChecked: boolean;
+	private isUp: boolean;
+	private timeOfLastCheck: Date;
+	private message: string;
+	private hasChecked: boolean;
 
 	constructor() {
 		this.isUp = false;
