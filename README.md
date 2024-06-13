@@ -329,3 +329,29 @@ Done!
   |__ package.json
 ```
 
+### Github Actions
+
+This project does run 2 github workflows: `validator` and `preview`
+
+#### Code Validator Workflow
+
+This workflow will run all the tests to ensure the project meet the guidelines and common coding structure.
+
+After running this workflow, you will make sure that:
+
+- The code formatting meets the repository standards.
+- The code passed the lint test, so no coding errors are present.
+- The code has passed all the test suits.
+- The code has 100% coverage. You can opt-out this by removing or commenting the last 2 lines on the `.github/workflows/validator.yml` file.
+
+#### Preview Deployment Workflow
+
+This workflow will ensure that the code builds correctly, and will provide a preview deployment at Vercel, so you can check how everything is rendering.
+
+**How to setup**
+1. You must go to [Vercel](https://vercel.com/), login and create a new project, and deploy it.
+2. Go to your github repository setting.
+3. Go to `secrets and variables/actions/new repository secret`, and add the following variables:
+  - `VERCEL_ORG_ID`: On your account settings/general, under VERCEL ID name.
+  - `VERCEL_PROJECT_ID`: On your project settings, under the same name.
+  - `VERCEL_TOKEN`:  On your account settings/tokens, you must create a new one.

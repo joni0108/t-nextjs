@@ -25,6 +25,7 @@ This is the initial version of this template, it does have the following:
 - Added a healthcheck at `/api` route.
 - Added the common folder structure for the projects, with demo example on each.
 - Added a project configuration file at `src/config.ts`
+- Added github workflows
 
 ### UI and Components
 - We added the light/dark theme to the template.
