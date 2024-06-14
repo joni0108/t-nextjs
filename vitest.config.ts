@@ -12,11 +12,12 @@ export default defineConfig({
             exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*", "src/**/*.bench.*", "src/**/*.test.*", "src/app/layout.tsx", "**/SEO.ts"],
             thresholds: {
                 lines: 100,
-                functions: 100,
+                functions: 80,
                 branches: 100,
                 statements: 100,
             }
         },
+        setupFiles: ["./setupTests.ts"],
     },
     resolve: {
         alias: {

@@ -1,6 +1,18 @@
 <h1>CHANGE<span style="color: red;">LOG</span></h1>
 
+> [!IMPORTANT]
+> The version **v0.1.1** have all the minimum standard structure, but version **v1.0.0** and higher will have all the packages that solves **commonly tasks** while building a web application. So if you want to 'start from scratch', use the version v0.1.1 instead.
+
 <h2><span style="color: #1069da;">Major</span> v1.0.0</h2>
+This update brings some services, features and customizations to the project. See what's new below:
+
+### Development Enchances
+
+### UI and Components
+- Added the Theme context to handle light and dark mode on the application.
+- Added `ThemeSwitcher` component to switch themes, raw styling, you can re-style it as you like.
+
+<h2><span style="color: #1069da;">Major</span> v0.1.1</h2>
 This is the initial version of this template, it does have the following:
 
 ### Development Enchances

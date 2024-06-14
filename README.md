@@ -373,3 +373,43 @@ We have added SEO automatically to the root layout, you can check them by openin
 3. Add all the icons you set on the manifest to the `/public/icons/` folder.
 4. Create a cover image for the social media, change its name to `og.png` and save it on the `/public/` folder.
 5. You are all set with SEO for the homepage, you can use the same SEO object on other pages layouts, or create your own custom based on the structure of that `ROOT_SEO` object.
+
+## Components
+### Light/Dark Theme
+
+This project have implemented the light and dark theme, which you can manipulate using the `useTheme()` react hook, or using the `ThemeSwitcher` button component at `@/components/functional/ThemeSwitcher.tsx`.
+
+#### Theme Context & Provider
+
+Is the provider that will handle the current theme on the application, save the selected theme on the local storage, and load the theme from the storage/match prefer-color-scheme if first visit.
+
+It is located at `@/contexts/themeContext` and it does have exports:
+- `ThemeProvider`: The provider that must wrap all the application.
+- `useTheme`: The react hook that will allow you to recover and set the current theme.
+
+<br />
+
+> [!IMPORTANT]
+> The provider must wrap the whole application, so we added it at the root layout. If you remove it, the hook and helper component will not be able to switch themes.
+
+#### ThemeSwitcher React Component
+
+This button uses the `useTheme` hook to switch the current theme when clicked.
+
+You can just use it anywhere in the app and will switch the current theme. Usage:
+
+```tsx
+import { ThemeSwitcher } from "@/components/functional/ThemeSwitch"
+
+export default function Home() {
+	return (
+		<main>
+			<p>Home Page</p>
+      <ThemeSwitcher />
+		</main>
+	);
+}
+```
+
+##### Styling
+If you want to style the button or create a new one, check the src code.

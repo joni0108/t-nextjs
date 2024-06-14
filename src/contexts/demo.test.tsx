@@ -1,6 +1,13 @@
 import { render, screen, waitFor, fireEvent, cleanup } from "@testing-library/react";
 import { describe, expect, it, afterEach, vi } from "vitest";
-import { MessageProvider, useMessage } from "./demo"; // Adjust the import path as necessarys
+import { MessageProvider, useMessage } from "./demo";
+import { beforeEach } from "node:test";
+
+vi.mock("window.matchMedia", () => ({
+    matches: false,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+}))
 
 describe("MessageContext", () => {
 	afterEach(() => {
