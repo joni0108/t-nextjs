@@ -6,7 +6,7 @@
 <h2><span style="color: #1069da;">Major</span> v1.0.0</h2>
 This update brings some services, features and customizations to the project. See what's new below:
 
-### Development Enchances
+### Development Enhances
 - Added `twMerge()` (tailwind merge) dev dependency to help working with dynamic classes.
 - Added `CryptoHash` static class for handling encryptation related tasks.
 - Added a custom react hook `useViewport()` to handle real-time width and height of the current viewport.
@@ -15,10 +15,13 @@ This update brings some services, features and customizations to the project. Se
 - Added the Theme context to handle light and dark mode on the application.
 - Added `ThemeSwitcher` component to switch themes, raw styling, you can re-style it as you like.
 
+### Bugs fixed and Issues Addressed
+- We added the command `pnpm build` to validator.yml file to run at dev branch on any push/pull request, as preview were only running with pull requests and the builds were not being tested on pushes.
+
 <h2><span style="color: #1069da;">Major</span> v0.1.1</h2>
 This is the initial version of this template, it does have the following:
 
-### Development Enchances
+### Development Enhances
 
 - We added multiple development useful package that includes:
     - `@biomejs/biome`: For code formatting and lint. It will be substituting ESlint and Prettier.
