@@ -275,8 +275,8 @@ If everything went well, you are all set!
 - [x] Create the github actions
 - [x] Add 100% coverage. And update the minimum threshold.
 - [x] Create the `SEO` object and inject it to the layout
-- [ ] Add the `ThemeContext` and implement them.
-- [ ] Add `tw-merge` dependency.
+- [x] Add the `ThemeContext` and implement them.
+- [x] Add `tw-merge` dependency.
 - [ ] Add the custom hooks.
 - [ ] Add and configure `storybook` and its plugins
 - [ ] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.

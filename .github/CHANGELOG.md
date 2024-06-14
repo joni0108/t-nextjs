@@ -7,6 +7,7 @@
 This update brings some services, features and customizations to the project. See what's new below:
 
 ### Development Enchances
+- Added `twMerge()` (tailwind merge) dev dependency to help working with dynamic classes.
 
 ### UI and Components
 - Added the Theme context to handle light and dark mode on the application.
