@@ -27,6 +27,7 @@ This is the initial version of this template, it does have the following:
 - Added a project configuration file at `src/config.ts`
 - Added github workflows
 - Added tests for all the demo components (**100% coverage**)
+- Added `@/components/SEO.tsx` file to handle SEO on the home page. Also added `robots.txt` and `manifest.json` files.
 
 ### UI and Components
 - We added the light/dark theme to the template.
