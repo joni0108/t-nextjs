@@ -274,7 +274,7 @@ If everything went well, you are all set!
 - [x] Finish configuring dev dependencies
 - [x] Create the github actions
 - [x] Add 100% coverage. And update the minimum threshold.
-- [ ] Create the `SEO` object and inject it to the layout
+- [x] Create the `SEO` object and inject it to the layout
 - [ ] Add the `ThemeContext` and implement them.
 - [ ] Add `tw-merge` dependency.
 - [ ] Add the custom hooks.
@@ -330,6 +330,7 @@ Done!
   |__ package.json
 ```
 
+## Getting Started
 ### Github Actions
 
 This project does run 2 github workflows: `validator` and `preview`
@@ -356,3 +357,19 @@ This workflow will ensure that the code builds correctly, and will provide a pre
   - `VERCEL_ORG_ID`: On your account settings/general, under VERCEL ID name.
   - `VERCEL_PROJECT_ID`: On your project settings, under the same name.
   - `VERCEL_TOKEN`:  On your account settings/tokens, you must create a new one.
+
+### Project Config & SEO
+
+#### Config.ts
+
+There is a file called `config.ts` at the route `.src/` which contain all the values for the project information, it is important that you fill them up, because they are used in some other components, including `@/components/SEO.ts`, the object that gives all the SEO metadata at the root layout.
+
+#### SEO
+
+We have added SEO automatically to the root layout, you can check them by opening the `@/components/seo.ts` file. However, there are some configurations you must follow for an optimized SEO.
+
+1. Go to `public/robots.txt` and add all the robots url rules.
+2. Go to `public/manifest.json` and create the manifest for your site.
+3. Add all the icons you set on the manifest to the `/public/icons/` folder.
+4. Create a cover image for the social media, change its name to `og.png` and save it on the `/public/` folder.
+5. You are all set with SEO for the homepage, you can use the same SEO object on other pages layouts, or create your own custom based on the structure of that `ROOT_SEO` object.
