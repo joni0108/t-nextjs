@@ -471,3 +471,27 @@ const code = CryptoHash.get2StepsVerificationCode()
 
 console.log(code)
 ```
+
+### useViewport
+**Type**: React Hook
+
+**What's the goal?**
+- `Handle window resize events` getting the current width and height for responsible designs or minimum/maximum sizes requirements.
+
+#### How to use?
+Use `useViewport` to get real-time width and height values
+```tsx
+"use client"
+
+import { useViewport } from "@/hooks/useViewport"
+
+function TestComponent() {
+  const { width, height } = useViewport()
+
+  return (
+    <div>
+      <p>Current width: {width}, Current height: {height}</p>
+    </div>
+  )
+}
+```

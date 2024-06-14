@@ -8,6 +8,8 @@ This update brings some services, features and customizations to the project. Se
 
 ### Development Enchances
 - Added `twMerge()` (tailwind merge) dev dependency to help working with dynamic classes.
+- Added `CryptoHash` static class for handling encryptation related tasks.
+- Added a custom react hook `useViewport()` to handle real-time width and height of the current viewport.
 
 ### UI and Components
 - Added the Theme context to handle light and dark mode on the application.
