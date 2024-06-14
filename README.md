@@ -413,3 +413,61 @@ export default function Home() {
 
 ##### Styling
 If you want to style the button or create a new one, check the src code.
+
+## Custom Hooks & Libraries
+These are some custom hooks and libraries added to the project to solve efficiently some common issues and tasks when developing a full stack web application.
+
+### CryptoHash
+**Type**: Library
+
+**What's the goal?**
+- `Create an encrypted hash` from a plain text. Useful when encrypting the passwords before saving them at the database.
+- `Compare encrypted hash` using a plain text. Used when comparing if the password from an user is the same as the one encrypted in the database.
+- `Create UUID` useful when creating id for database, or any other service.
+- `Create two steps authentication codes` useful to validate if the user is really who is trying to login, verify emails, etc.
+
+#### Methods
+Use `async CryptoHash.hashString()` to encrypt any `string` value.
+```ts
+import { CryptoHash } from "@/libs/CryptoHash"
+
+async function encrypt() {
+    const encrypted = await CryptoHash.hashString("<text to encrypt>")
+    console.log(encrypted)
+}
+
+encrypt()
+```
+
+Use `async CryptoHash.compareString()` to compare a plain text with a given hash.
+
+```ts
+import { CryptoHash } from "@/libs/CryptoHash"
+
+async function compare() {
+    const comparison = await CryptoHash.compareString("<plain text to compare>", "<your hash>")
+    console.log(comparison)
+}
+
+compare()
+```
+
+Use `CryptoHash.getRandomUUID()` to get a random UUID formatted value.
+
+```ts
+import { CryptoHash } from "@/libs/CryptoHash"
+
+const uuid = CryptoHash.getRandomUUID()
+
+console.log(uuid)
+```
+
+Use `CryptoHash.get2StepsVerificationCode()` to get a random 6 characters code uppercased.
+
+```ts
+import { CryptoHash } from "@/libs/CryptoHash"
+
+const code = CryptoHash.get2StepsVerificationCode()
+
+console.log(code)
+```

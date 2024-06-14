@@ -8,6 +8,7 @@
 		"rules": {
 			"recommended": false,
 			"complexity": {
+				"noStaticOnlyClass": "off",
 				"all": true
 			},
 			"suspicious": {
