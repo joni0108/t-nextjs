@@ -238,7 +238,7 @@ At this point you are almost all set, just need to add all the environmental var
 5. Create a file called `.env.local` and copy all the variables names and the values (you should get the values following the service docs, it will be below).
 6. That's it.
 
-> [!WARNING]
+> [!CAUTION]
 > Your environmental variables (mostly secret keys) should not be shared with anyone, the file is already ignore by github, so it will be only at your computer. Sharing it with anyone, or leaking it by hard-writting them on your client code could result on theft, attacks, and over-usage of the service by cyber criminals.
 
 You are all set, now you can run some commands to verify the installation went well. If one of the comnmands fail (commonly the tests), you should check what did you did wrong.
