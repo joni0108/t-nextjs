@@ -35,3 +35,5 @@ jobs:
         run: pnpm test
       - name: Check to pass the coverage threshold
         run: pnpm coverage
+      - name: Build the project
+        run: pnpm build
