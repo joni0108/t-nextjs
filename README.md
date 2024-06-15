@@ -277,7 +277,7 @@ If everything went well, you are all set!
 - [x] Create the `SEO` object and inject it to the layout
 - [x] Add the `ThemeContext` and implement them.
 - [x] Add `tw-merge` dependency.
-- [ ] Add the custom hooks.
+- [x] Add the custom hooks.
 - [ ] Add and configure `storybook` and its plugins
 - [ ] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
 - [ ] Add `Clerk Auth` and configure it.
@@ -470,6 +470,56 @@ import { CryptoHash } from "@/libs/CryptoHash"
 const code = CryptoHash.get2StepsVerificationCode()
 
 console.log(code)
+```
+
+### DataValidation
+**Type**: Library
+
+**What's the goal?**
+- `Validate data types & structure` to ensure your data is being pass as expected and avoid unexpected errors at runtime.
+
+#### Methods
+Use `DataValidation.validateEmail()` to validate that a string is an email.
+```ts
+import { DataValidation } from "@/libs/DataValidator"
+
+console.log(DataValidator.validateEmail("<your likely email>"))
+```
+
+Use `DataValidation.validatePassword()` to validate that a password meet the minimum security criteria such as:
+- At least 8 characters long
+- At least an upper case letter
+- At least a number
+- At least an special character
+
+```ts
+import { DataValidation } from "@/libs/DataValidator"
+
+console.log(DataValidator.validatePassword("<your password>"))
+```
+
+Use `DataValidation.validateObject()` to match an object structure and value types with a provided schema.
+
+```ts
+import { DataValidation } from "@/libs/DataValidator"
+
+const schema = {
+  name: "string",
+  age: "number",
+  other: {
+    isUser: "boolean"
+  }
+}
+
+const exampleObj = {
+  name: "Jonathan",
+  age: 22,
+  other: {
+    isUser: true
+  }
+}
+
+console.log(DataValidator.validateObject(exampleObj, schema))
 ```
 
 ### useViewport
