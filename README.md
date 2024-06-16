@@ -120,16 +120,7 @@ Resend</a>
 <image src="https://skillicons.dev/icons?i=firebase" style="width: 16px; padding-left: 2px"">
 <a style="color: #1069da; font-weight: bold" href="https://firebase.google.com/">
 Firestore</a> 
-- From firebase aka Google, top service for hosting your user files.
-</div>
-</li>
-
-<li>
-<div style="display: flex; gap: 8px; align-items: center">
-<image src="https://skillicons.dev/icons?i=mongodb" style="width: 16px; padding-left: 2px"">
-<a style="color: #1069da; font-weight: bold" href="https://www.mongodb.com/">
-MongoDB</a> 
-- A reliable non-sql database for hosting anything, including a SaaS company.
+- From firebase aka Google, top service for hosting your user files, and non-sql database.
 </div>
 </li>
 
@@ -272,9 +263,9 @@ If everything went well, you are all set!
 - [x] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
 - [x] Add `Clerk Auth` and configure it.
 - [x] Add `Resend` and configure it.
-- [ ] Add and configure `Firestore` from firebase.
-- [ ] Create masking route/firebase auth for request to storage.
-- [ ] Add and configure mongodb.
+- [x] Add and configure `Firestore` from firebase.
+- [x] Create masking route/firebase auth for request to storage.
+- [ ] Configure all the firebase services with clerk, and test them
 - [ ] Add `easy-mongo` library/class for easily working with basic calls to mongo.
 - [ ] Add `@codixfy/gemini` package for working with gemini ai.
 - [ ] Add `@codixfy/ui` and configure it to have react ui components package.
