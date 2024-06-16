@@ -12,6 +12,7 @@ This update brings some services, features and customizations to the project. Se
 - Added a custom react hook `useViewport()` to handle real-time width and height of the current viewport.
 - Added `DataValidation` static class for handling data validation tasks.
 - Added `Clerk Auth` service to handle auth sessions and basic user information.
+- Added `Mailing` service to send emails using Resend api.
 
 ### UI and Components
 - Added the Theme context to handle light and dark mode on the application.

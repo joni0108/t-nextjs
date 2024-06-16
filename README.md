@@ -271,7 +271,7 @@ If everything went well, you are all set!
 - [x] Add the custom hooks.
 - [x] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
 - [x] Add `Clerk Auth` and configure it.
-- [ ] Add `Resend` and configure it.
+- [x] Add `Resend` and configure it.
 - [ ] Add and configure `Firestore` from firebase.
 - [ ] Create masking route/firebase auth for request to storage.
 - [ ] Add and configure mongodb.
@@ -611,3 +611,54 @@ import {
 ```
 
 5. Remove the folder `src/app/auth` completely.
+
+## Resend Service
+
+### Usage
+1. Get the API key of Resend Mailing, and save it to the `.env.local` file, follow demo naming.
+
+> [!CAUTION]
+> Please, use this service only on server components and/or api endpoints to avoid leaking the key with the client code.
+
+Use `EmailService.Send()` to send an email using a react component as template. See `src/services/mail-templates.tsx` for an example:
+
+```ts
+import { EmailService } from "@/services/Mail"
+import { DemoEmailTemplate } from "@/service/mail-template"
+
+async function Run() {
+  const response = await EmailService.Send(
+    {
+      name: "Codixfy",
+      email: "sales@codixfy.com"
+    },  // From info
+    ["example@mail.com"], // To emails
+    "Hello world!", // Subject
+    DemoEmailTemplate // React component
+  )
+}
+```
+
+Or if you prefer raw html, then use `EmailService.SendRaw()`:
+
+```ts
+import { EmailService } from "@/services/Mail"
+
+async function Run() {
+  const response = await EmailService.Send(
+    {
+      name: "Codixfy",
+      email: "sales@codixfy.com"
+    },
+    ["example@mail.com"],
+    "Hello world!",
+    `
+      <p>Hello world, this is a body</p>
+    `
+  )
+}
+```
+
+### How to remove
+1. use `pnpm remove resend` to remove the library
+2. Delete the files `src/services/Mail.ts` and `src/services/mail-templates.tsx`
