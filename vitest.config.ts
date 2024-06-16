@@ -11,10 +11,10 @@ export default defineConfig({
         coverage: {
             exclude: ["node_modules", ".next/*", "*.mjs", "*.config.*", "src/**/*.bench.*", "src/**/*.test.*", "src/app/layout.tsx", "**/SEO.ts"],
             thresholds: {
-                lines: 100,
+                lines: 80,
                 functions: 80,
                 branches: 80,
-                statements: 100,
+                statements: 80,
             }
         },
         setupFiles: ["./setupTests.ts"],

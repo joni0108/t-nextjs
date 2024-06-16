@@ -11,10 +11,13 @@ This update brings some services, features and customizations to the project. Se
 - Added `CryptoHash` static class for handling encryptation related tasks.
 - Added a custom react hook `useViewport()` to handle real-time width and height of the current viewport.
 - Added `DataValidation` static class for handling data validation tasks.
+- Added `Clerk Auth` service to handle auth sessions and basic user information.
 
 ### UI and Components
 - Added the Theme context to handle light and dark mode on the application.
 - Added `ThemeSwitcher` component to switch themes, raw styling, you can re-style it as you like.
+- You can use any component from `Clerk Auth`, see docs.
+- Added some `/auth` page routes as example of usage of Clerk Auth.
 
 ### Bugs fixed and Issues Addressed
 - We added the command `pnpm build` to validator.yml file to run at dev branch on any push/pull request, as preview were only running with pull requests and the builds were not being tested on pushes.

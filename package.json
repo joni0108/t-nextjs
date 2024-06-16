@@ -17,6 +17,7 @@
 		"git-prepare": "pnpm format:fix && pnpm lint && pnpm test && pnpm coverage && pnpm build"
 	},
 	"dependencies": {
+		"@clerk/nextjs": "^5.1.5",
 		"bcrypt": "^5.1.1",
 		"next": "14.2.4",
 		"react": "^18",

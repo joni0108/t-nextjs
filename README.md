@@ -99,15 +99,6 @@ Vitest</a>
 
 <li>
 <div style="display: flex; gap: 7px; align-items: center">
-📓
-<a style="color: #1069da; font-weight: bold" href="https://storybook.js.org/">
-Storybook</a> 
-- Create, test, and showcase your react components.
-</div>
-</li>
-
-<li>
-<div style="display: flex; gap: 7px; align-items: center">
 🔏
 <a style="color: #1069da; font-weight: bold" href="https://clerk.com/">
 Clerk Auth</a> 
@@ -278,9 +269,8 @@ If everything went well, you are all set!
 - [x] Add the `ThemeContext` and implement them.
 - [x] Add `tw-merge` dependency.
 - [x] Add the custom hooks.
-- [ ] Add and configure `storybook` and its plugins
-- [ ] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
-- [ ] Add `Clerk Auth` and configure it.
+- [x] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
+- [x] Add `Clerk Auth` and configure it.
 - [ ] Add `Resend` and configure it.
 - [ ] Add and configure `Firestore` from firebase.
 - [ ] Create masking route/firebase auth for request to storage.
@@ -545,3 +535,79 @@ function TestComponent() {
   )
 }
 ```
+
+## Clerk Auth
+
+Clerk auth is the authentication provider we do use.
+
+### Usage
+1. Go to [Clerk Website](https://clerk.com/) and create a new account.
+2. Create a new project/app and configure it.
+3. Copy and paste all the clerk-related enviromental variable names from `demo.env` to `.env.local`
+4. Get your public and priivate keys from `Clerk Dashboard/API Keys`.
+5. Add your custom onboarding by following the official [docs](https://clerk.com/docs/guides/add-onboarding-flow).
+
+> [!CAUTION]
+> Do **not** share your private key with anyone.
+
+See all the pages on `src/auth` to know how to use it, or read the official docs.
+
+### How to remove
+
+1. Uninistall the package using:
+```bash
+pnpm remove @clerk/nextjs
+```
+
+2. Remove from the `src/middleware.ts` file with following content:
+
+Note: If that all the file contain, then delete the file completely.
+
+```ts
+import { clerkMiddleware } from "@clerk/nextjs/server";
+
+export default clerkMiddleware();
+
+export const config = {
+	matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+};
+
+```
+
+3. Go to the root layout at `/src/app/layout.tsx` and remove the `<ClerkProvider>` tags from the code, and the importation of it.
+
+```tsx
+import { ThemeProvider } from "@/contexts/themeContext";
+
+<ClerkProvider>
+  {...}
+</ClerkProvider>
+```
+
+4. Go to `/src/app/page.tsx` and remove the following code:
+
+```tsx
+import {
+	SignInButton,
+	SignUpButton,
+	SignedIn,
+	SignedOut,
+	UserButton,
+} from "@clerk/nextjs";
+
+<SignedOut>
+	<h1>You are currently signed out, please sign in:</h1>
+	<br />
+	<SignInButton />
+	<SignUpButton />
+</SignedOut>
+<SignedIn>
+	<h1>You are currently signed in.</h1>
+	<br />
+	Profile: <UserButton /> <br />
+	<a href="/auth/protected-client">Protected Page (Client)</a> <br />
+	<a href="/auth/protected-server">Protected Page (Server)</a> <br />
+</SignedIn>
+```
+
+5. Remove the folder `src/app/auth` completely.
