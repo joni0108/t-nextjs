@@ -13,15 +13,19 @@ This update brings some services, features and customizations to the project. Se
 - Added `DataValidation` static class for handling data validation tasks.
 - Added `Clerk Auth` service to handle auth sessions and basic user information.
 - Added `Mailing` service to send emails using Resend api.
+- Addded `Storage` service to saving, consuming, and deleting cloud files. (needs tests)
+- Added documentation to know how to sign in to firebase using clerk auth.
 
 ### UI and Components
 - Added the Theme context to handle light and dark mode on the application.
 - Added `ThemeSwitcher` component to switch themes, raw styling, you can re-style it as you like.
 - You can use any component from `Clerk Auth`, see docs.
 - Added some `/auth` page routes as example of usage of Clerk Auth.
+- Added a demo component to test upload service.
 
 ### Bugs fixed and Issues Addressed
 - We added the command `pnpm build` to validator.yml file to run at dev branch on any push/pull request, as preview were only running with pull requests and the builds were not being tested on pushes.
+- We stablished a new folder structure, saving all the examples in `src/.examples` to avoid mixing them up with the actual working features of the template.
 
 <h2><span style="color: #1069da;">Major</span> v0.1.1</h2>
 This is the initial version of this template, it does have the following:

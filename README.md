@@ -653,3 +653,249 @@ async function Run() {
 ### How to remove
 1. use `pnpm remove resend` to remove the library
 2. Delete the files `src/services/Mail.ts` and `src/services/mail-templates.tsx`
+
+## Firebase -> Cloud Storage & Database
+
+We use `Firebase` for our files cloud storage, and database, so it is configured to work the authentication with Clerk.
+
+### Setting Up Auth
+1. Go to `Clerk` dashboard, go to integrations, and activate `firebase`
+2. Follow the setup instructions on the clerk page to complete the integration.
+3. To sign in, you can do it in 2 different ways:
+
+#### Client Side
+```tsx
+"use client"
+import { auth } from "root/firebaseConfig";
+import { useAuth } from "@clerk/nextjs";
+import { signInWithCustomToken } from "firebase/auth";
+
+export function DemoComponent() {
+  const { getToken, userId } = useAuth();
+  const [user, setUser] = useState<any>(null)
+
+  const handleAuth = async () => {
+      const token = await getToken({ template: "integration_firebase" });
+			const userCredentials = await signInWithCustomToken(auth, token || "");
+
+      setUser(userCredentials.user)
+  }
+
+  return (
+    <div>
+      <button onClick={handleAuth}>Login to Firebase</button>
+      <p>{user}</p>
+    </div>
+  )
+}
+```
+
+#### Server Side
+```tsx
+"use server"
+import { auth } from "root/firebaseConfig";
+import { auth as ClerkAuth } from "@clerk/nextjs/server";
+import { signInWithCustomToken } from "firebase/auth";
+
+export async function GET() {
+  const { getToken, userId } = ClerkAuth()
+
+  const token = await getToken({ template: "integration_firebase" });
+	const userCredentials = await signInWithCustomToken(auth, token || "");
+
+  return Response.json({
+    data: userCredentials.user
+  })
+}
+```
+
+You must have `authentication`, `storage`, and `database` services enabled on your Firebase Console in order to use these services.
+
+### Storage Service
+This service allows you to store, read, and delete files on the Firebase cloud services.
+
+#### Usage
+1. Create your Upload Object, and add the firebase auth.
+
+It must handle the authentication with firebase (using clerk) within the same component, to do so you must use the following code (on a client component)
+
+```tsx
+"use client"
+import { auth } from "root/firebaseConfig";
+import { useAuth } from "@clerk/nextjs";
+import { signInWithCustomToken } from "firebase/auth";
+
+export function UploadComponent() {
+  const { getToken, userId } = useAuth();
+
+  const handleAuth = async () => {
+      const token = await getToken({ template: "integration_firebase" });
+			const userCredentials = await signInWithCustomToken(auth, token || "");
+
+      return userCredentials.user
+  }
+
+  return (
+    <div>
+      <h2>Upload Files</h2>
+    </div>
+  )
+}
+```
+
+2. You can create an upload input for selecting the files, and store them on a state.
+
+```tsx
+"use client"
+import { auth } from "root/firebaseConfig";
+import { useAuth } from "@clerk/nextjs";
+import { signInWithCustomToken } from "firebase/auth";
+import React, {useState} from "react" // Added this line
+
+export function UploadComponent() {
+  const { getToken, userId } = useAuth();
+  const [filesLib, setFilesLib] = useState<FileList | null>(null);  // Added this line
+
+  const handleAuth = async () => {
+      const token = await getToken({ template: "integration_firebase" });
+			const userCredentials = await signInWithCustomToken(auth, token || "");
+
+      return userCredentials.user
+  }
+
+  // Added this function to handle the files input change
+  const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+
+    if (files) {
+			setFilesLib(files);
+		}
+  }
+
+  return (
+    <div>
+      <h2>Upload Files</h2>
+      <input type="file" onChange={handleFileChange} /> // Added this line
+    </div>
+  )
+}
+```
+
+3. We will add the handle to upload the file
+
+```tsx
+"use client"
+import { auth } from "root/firebaseConfig";
+import { useAuth } from "@clerk/nextjs";
+import { signInWithCustomToken } from "firebase/auth";
+import React, {useState} from "react"
+import { StorageService } from "@/services/storage"; // Added this line
+
+export function UploadComponent() {
+  const { getToken, userId } = useAuth();
+  const [filesLib, setFilesLib] = useState<FileList | null>(null);  // Added this line
+  const [data, setData] = useState({
+		bytesTransferred: 0,
+		totalBytes: 0,
+		progress: 0,
+	}); // Added this state to handle the data results
+  const [url, setUrl] = useState("")  // Added this state to handle the url
+
+  const handleAuth = async () => {
+      const token = await getToken({ template: "integration_firebase" });
+			const userCredentials = await signInWithCustomToken(auth, token || "");
+
+      return userCredentials.user
+  }
+
+  const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+
+    if (files) {
+			setFilesLib(files);
+		}
+  }
+
+  // Added this function to handle the upload proccess
+  const handleUpload = async () => {
+    // Check if the user session is available and there's at least a file
+    if(filesLib && userId) {
+      // We create an instance of the storage service
+      const upload = new StorageService(userId)
+
+      // We handle the login
+      const authResult = await handleAuth()
+
+      // Check if we succeed in the auth
+      if(authResult) {
+        // Preparing the listening for the uploading update event
+        upload.on("uploading", (data) => {
+          // This data is updated on each new change event
+          setData({
+            bytesTransferred: data.bytesTransferred,
+					  totalBytes: data.totalBytes,
+					  progress: data.progress,
+          })
+        })
+
+        // Preparing the listening for the completed event
+        upload.on("completed", () => {
+          // Get all metadata
+          const metadata = upload.getMetadata()
+
+          console.log("Finished uploading")
+
+          // Save the URL
+          setUrl(metadata.downloadURL)
+
+          // -> Do whatever you want, like saving the url to a database.
+        })
+
+        // Preparing the listening for errors
+        upload.on("error", (error) => {
+          // -> Handle the error as you need
+          console.log("An error ocurred while uploading the file")
+          console.log(error)
+        })
+
+        // Start upload proccess
+        await upload.UploadFile(filesLib[0])
+
+      } else {
+        // In case auth failed
+        console.log("The authentication to firebase failed")
+      }
+    }
+  }
+
+  return (
+    <div>
+      <h2>Upload Files</h2>
+      <input type="file" onChange={handleFileChange} /> // Added this line
+    </div>
+  )
+}
+```
+
+Done! We have uploaded the file successfully.
+
+> [!WARNING]
+> You should save the download url in a database linked to the user that uploaded, so you can fetch it to show it, or delete as needed later on.
+
+To delete the image, you have the static method `StorageService.DeleteFile()` and pass the download url as argument.
+
+```ts
+// Do not forget to sign in to firebase if you haven't done already
+import { StorageService } from "@/services/storage";
+
+async function DeleteFile(url: string) {
+  const res = StorageService.DeleteFile(url)
+
+  console.log(res)
+}
+
+DeleteFile("<the download url>")
+```
+
+> [!NOTE]
+> We have created a demo component at `src/.examples/components/UploadComponent.tsx` so you can test it out.

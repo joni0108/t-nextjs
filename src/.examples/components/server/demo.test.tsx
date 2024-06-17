@@ -2,7 +2,7 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import { describe, expect, it, afterEach, vi } from "vitest";
 import { ServerDemoComponent } from "./demo";
-import { isServerUp } from "@/libs/demo";
+import { isServerUp } from "@/.examples/libs/demo";
 
 vi.mock("../../libs/demo.ts", () => ({
     isServerUp: vi.fn()

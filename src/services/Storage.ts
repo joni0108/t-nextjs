@@ -1,139 +1,114 @@
 import {
 	type FirebaseStorage,
-	getStorage,
 	ref,
 	uploadBytesResumable,
 	UploadTaskSnapshot,
 	getDownloadURL,
 	deleteObject,
 } from "firebase/storage";
-import { app } from "root/firebaseConfig";
+import { storage } from "root/firebaseConfig";
 import { EventEmitter } from "events";
 
 class StorageService extends EventEmitter {
-	storage: FirebaseStorage;
-	fileToUpload: File | null;
-	bytesTransferred: number;
-	totalBytes: number;
-	progress: number;
-	status: string;
-	downloadURL: string;
+	private storage: FirebaseStorage;
+	private fileToUpload: File | null;
+	private bytesTransferred: number;
+	private totalBytes: number;
+	private progress: number;
+	private fileID: string;
+	private fileExtension: string;
+	private status: string;
+	private downloadURL: string;
 	// biome-ignore lint/suspicious/noExplicitAny: any is used to avoid TypeScript errors
-	uploadTask: any;
-	fileMetadata: object;
+	private uploadTask: any;
+	// biome-ignore lint/suspicious/noExplicitAny: any is used to avoid TypeScript errors
+	private fileMetadata?: any;
+	private userID: string;
 
-	constructor() {
+	constructor(userId: string) {
 		super();
-		this.storage = getStorage(app);
+		this.storage = storage;
 		this.fileToUpload = null;
 		this.bytesTransferred = 0;
 		this.totalBytes = 0;
 		this.progress = 0;
+		this.fileID = "";
+		this.fileExtension = "";
 		this.status = "";
 		this.downloadURL = "none";
 		this.uploadTask = null;
-		this.fileMetadata = {
-			contentType: "image/jpeg",
-			owner: "",
-			name: "",
-			extension: "",
-			id: "",
-			size: 0,
-			downloadURL: "",
-			unmaskedURL: "",
-		};
+		this.fileMetadata = undefined;
+		this.userID = userId;
 	}
 
-	async UploadFile(file: File, userID: string, customFileID: string = "") {
+	async UploadFile(file: File) {
 		if (!file)
 			return Promise.reject(
 				new Error("No file to upload. Please select a file."),
 			);
 
 		return new Promise((resolve) => {
-			const randomID = customFileID === "" ? crypto.randomUUID() : customFileID;
+			this.fileToUpload = file;
+			this.fileID = crypto.randomUUID();
 			const filename = file.name.split(".");
-			const extension = filename[filename.length - 1];
+			this.fileExtension = filename[filename.length - 1];
 
 			const storageRef = ref(
 				this.storage,
-				`${userID}/${randomID}.${extension}`,
+				`${this.userID}/${this.fileID}.${this.fileExtension}`,
 			);
+
 			this.uploadTask = uploadBytesResumable(storageRef, file);
+
+			this.emit("started");
 
 			this.uploadTask.on(
 				"state_changed",
 				(snapshot: UploadTaskSnapshot) => {
 					this.bytesTransferred = snapshot.bytesTransferred;
 					this.totalBytes = snapshot.totalBytes;
-					this.progress = parseFloat(
-						((this.bytesTransferred / this.totalBytes) * 100).toFixed(1),
-					);
+					this.progress = (this.bytesTransferred / this.totalBytes) * 100;
 					this.status = "uploading";
+
 					this.emit("uploading", {
 						bytesTransferred: this.bytesTransferred,
 						totalBytes: this.totalBytes,
 						progress: this.progress,
-					}); // Emit the uploading event with the current progress
+					});
 				},
-				(error: unknown) => {
-					console.error(error);
-					this.status = "error";
-					this.emit("error", error); // Emit an error event
-					resolve({ error: error });
+				(error: Error) => {
+					this.emit("error", error);
 				},
 				async () => {
-					this.status = "complete";
-					await getDownloadURL(this.uploadTask.snapshot.ref).then(
-						(downloadURL) => {
-							this.downloadURL =
-								"/api/get-masked-image?user-id=" +
-								userID +
-								"&file-id=" +
-								randomID +
-								"&extension=" +
-								extension;
+					this.status = "completed";
 
-							this.fileMetadata = {
-								contentType: file.type,
-								owner: userID,
-								name: file.name,
-								extension: extension,
-								id: randomID,
-								size: file.size,
-								downloadURL: this.downloadURL,
-								orignalURL: downloadURL,
-							};
-						},
-					);
-					this.emit("finished"); // Emit the finished event
-					resolve({ data: this.UploadState() });
+					await getDownloadURL(this.uploadTask.snapshot.ref).then((url) => {
+						this.downloadURL = url;
+						this.fileMetadata = {
+							contentType: file.type,
+							owner: this.userID,
+							name: file.name,
+							extension: this.fileExtension,
+							id: this.fileID,
+							size: file.size,
+							downloadURL: this.downloadURL,
+						};
+					});
+					this.emit("completed", this.fileMetadata);
+					resolve(this.fileMetadata);
 				},
 			);
 		});
 	}
 
-	UploadState() {
-		const obj = {
-			state: this.status,
-			bytesTransferred: this.bytesTransferred,
-			totalBytes: this.totalBytes,
-			progress: this.progress,
-			downloadURL: this.downloadURL,
-		};
-
-		return obj;
-	}
-
-	GetFileMetadata() {
+	getMetadata() {
 		return this.fileMetadata;
 	}
 
-	static async DeleteFile(originalRoute: string) {
-		const storage = getStorage(app);
-		const storageRef = ref(storage, originalRoute);
+	static async DeleteFile(downloadURL: string) {
+		const storageRef = ref(storage, downloadURL);
 		return await deleteObject(storageRef);
 	}
 }
 
-export default StorageService;
+export { StorageService };
