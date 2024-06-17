@@ -248,25 +248,7 @@ pnpm test
 
 If everything went well, you are all set!
 
-## 🛣️ Roadmap
-- [x] Add all the initial dependencies & configure them
-- [x] Add all the scripts, including testing and linting.
-- [x] Create the folder structure
-- [x] Create the `config.ts` file and other constants.
-- [x] Finish configuring dev dependencies
-- [x] Create the github actions
-- [x] Add 100% coverage. And update the minimum threshold.
-- [x] Create the `SEO` object and inject it to the layout
-- [x] Add the `ThemeContext` and implement them.
-- [x] Add `tw-merge` dependency.
-- [x] Add the custom hooks.
-- [x] Prepare example pages, including landing, login protected, onboarding, and organizarion role protected routes.
-- [x] Add `Clerk Auth` and configure it.
-- [x] Add `Resend` and configure it.
-- [x] Add and configure `Firestore` from firebase.
-- [x] Create masking route/firebase auth for request to storage.
-- [x] Configure all the firebase services with clerk, and test them
-- [x] Add `easy-mongo` library/class for easily working with basic calls to mongo.
+## 🛣️ TODO
 - [ ] Add `@codixfy/gemini` package for working with gemini ai.
 - [ ] Add `@codixfy/ui` and configure it to have react ui components package.
 

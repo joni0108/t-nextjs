@@ -5,7 +5,6 @@ import "./globals.css";
 import { ROOT_SEO } from "@/components/SEO";
 import { ThemeProvider } from "@/contexts/themeContext";
 import { ClerkProvider } from "@clerk/nextjs";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
