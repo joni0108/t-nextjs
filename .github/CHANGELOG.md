@@ -15,6 +15,7 @@ This update brings some services, features and customizations to the project. Se
 - Added `Mailing` service to send emails using Resend api.
 - Addded `Storage` service to saving, consuming, and deleting cloud files. (needs tests)
 - Added documentation to know how to sign in to firebase using clerk auth.
+- Added the Database service to handle database communications on firebase.
 
 ### UI and Components
 - Added the Theme context to handle light and dark mode on the application.

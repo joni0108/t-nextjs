@@ -265,8 +265,8 @@ If everything went well, you are all set!
 - [x] Add `Resend` and configure it.
 - [x] Add and configure `Firestore` from firebase.
 - [x] Create masking route/firebase auth for request to storage.
-- [ ] Configure all the firebase services with clerk, and test them
-- [ ] Add `easy-mongo` library/class for easily working with basic calls to mongo.
+- [x] Configure all the firebase services with clerk, and test them
+- [x] Add `easy-mongo` library/class for easily working with basic calls to mongo.
 - [ ] Add `@codixfy/gemini` package for working with gemini ai.
 - [ ] Add `@codixfy/ui` and configure it to have react ui components package.
 
@@ -899,3 +899,117 @@ DeleteFile("<the download url>")
 
 > [!NOTE]
 > We have created a demo component at `src/.examples/components/UploadComponent.tsx` so you can test it out.
+
+### Database Service
+This service allows you store any data in a non-sql (documents based) database powered by firebase aka Google.
+
+#### Usage
+> [!WARNING]
+> Do not forget to sign in to firebase with clerk if you haven't done already before using any of these methods.
+
+Import the service using:
+
+```ts
+import { DatabaseStorage } from "@/services/database"
+```
+
+To create a document, use the `setDocument()` method: 
+
+```ts
+import { DatabaseStorage } from "@/services/database"
+
+const collectionName = "your collection name"
+const data = {
+  // Your data to add
+}
+
+async function Run() {
+  const db = new DatabaseStorage("<user id>")
+
+  // Create the document
+  const res = db.setDocument(collectionName, data)
+
+  console.log(res)
+}
+
+Run()
+```
+
+To get an specific document on a collection for the same user use the `getDocument()` method:
+
+```ts
+import { DatabaseStorage } from "@/services/database"
+
+const collectionName = "your collection name"
+
+async function Run() {
+  const db = new DatabaseStorage("<user id>")
+
+  // Create the document
+  const res = db.getDocument(collectionName)
+
+  console.log(res)
+}
+
+Run()
+```
+
+To update an specific document on a collection for the same user use the `updateDocument()` method:
+
+```ts
+import { DatabaseStorage } from "@/services/database"
+
+const collectionName = "your collection name"
+const data = {
+  name: "John Doe",
+  age: 22
+}
+
+async function Run() {
+  const db = new DatabaseStorage("<user id>")
+
+  // Create the document
+  const res = db.updateDocument(collectionName, data)
+
+  console.log(res)
+}
+
+Run()
+```
+
+To delete an specific document on a collection for the same user use the `deleteDocument()` method:
+
+```ts
+import { DatabaseStorage } from "@/services/database"
+
+const collectionName = "your collection name"
+
+async function Run() {
+  const db = new DatabaseStorage("<user id>")
+
+  // Create the document
+  const res = db.deleteDocument(collectionName, data)
+
+  console.log(res)
+}
+
+Run()
+```
+
+To do a query you can use the static method `query()`:
+
+```ts
+import { DatabaseStorage } from "@/services/database"
+
+const collectionName = "your collection name"
+const field = "email"
+const email = "sales@codixfy.com"
+
+async function Run() {
+  const result = DatabaseService.query(collectionName, field, email)
+  
+  console.log(result)
+}
+
+Run()
+```
