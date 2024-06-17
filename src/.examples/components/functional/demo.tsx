@@ -5,7 +5,7 @@
 // These components are commonly dynamic, using react hooks, but still front-end.
 //? On this example is just a counter component that have a button to increment the count.
 
-import { useCounter } from "@/hooks/demo";
+import { useCounter } from "@/.examples/hooks/demo";
 import { DemoCoreComponent } from "../core/demo";
 
 export function Counter() {

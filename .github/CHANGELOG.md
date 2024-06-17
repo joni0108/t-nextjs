@@ -1,9 +1,37 @@
 <h1>CHANGE<span style="color: red;">LOG</span></h1>
 
+> [!IMPORTANT]
+> The version **v0.1.1** have all the minimum standard structure, but version **v1.0.0** and higher will have all the packages that solves **commonly tasks** while building a web application. So if you want to 'start from scratch', use the version v0.1.1 instead.
+
 <h2><span style="color: #1069da;">Major</span> v1.0.0</h2>
+This update brings some services, features and customizations to the project. See what's new below:
+
+### Development Enhances
+- Added `twMerge()` (tailwind merge) dev dependency to help working with dynamic classes.
+- Added `CryptoHash` static class for handling encryptation related tasks.
+- Added a custom react hook `useViewport()` to handle real-time width and height of the current viewport.
+- Added `DataValidation` static class for handling data validation tasks.
+- Added `Clerk Auth` service to handle auth sessions and basic user information.
+- Added `Mailing` service to send emails using Resend api.
+- Addded `Storage` service to saving, consuming, and deleting cloud files. (needs tests)
+- Added documentation to know how to sign in to firebase using clerk auth.
+- Added the Database service to handle database communications on firebase.
+
+### UI and Components
+- Added the Theme context to handle light and dark mode on the application.
+- Added `ThemeSwitcher` component to switch themes, raw styling, you can re-style it as you like.
+- You can use any component from `Clerk Auth`, see docs.
+- Added some `/auth` page routes as example of usage of Clerk Auth.
+- Added a demo component to test upload service.
+
+### Bugs fixed and Issues Addressed
+- We added the command `pnpm build` to validator.yml file to run at dev branch on any push/pull request, as preview were only running with pull requests and the builds were not being tested on pushes.
+- We stablished a new folder structure, saving all the examples in `src/.examples` to avoid mixing them up with the actual working features of the template.
+
+<h2><span style="color: #1069da;">Major</span> v0.1.1</h2>
 This is the initial version of this template, it does have the following:
 
-### Development Enchances
+### Development Enhances
 
 - We added multiple development useful package that includes:
     - `@biomejs/biome`: For code formatting and lint. It will be substituting ESlint and Prettier.

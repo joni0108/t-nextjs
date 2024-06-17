@@ -2,10 +2,10 @@
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { describe, expect, it, afterEach, vi } from "vitest";
 import { Counter } from "./demo";
-import { useCounter } from "@/hooks/demo";
+import { useCounter } from "@/.examples/hooks/demo";
 
 // Mock the useCounter hook
-vi.mock("@/hooks/demo", () => ({
+vi.mock("../../hooks/demo.ts", () => ({
   useCounter: vi.fn()
 }));
 
